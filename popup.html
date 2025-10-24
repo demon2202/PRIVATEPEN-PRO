@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrivatePen Pro</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="popup-header">
+      <div class="logo">
+        <span class="logo-icon">✍️</span>
+        <h1>PrivatePen Pro</h1>
+      </div>
+      <div class="privacy-badge" id="privacyBadge">
+        <span class="privacy-icon">🔒</span>
+        <span class="privacy-text">Private</span>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="dashboard">Dashboard</button>
+      <button class="tab" data-tab="settings">Settings</button>
+      <button class="tab" data-tab="snippets">Snippets</button>
+    </div>
+
+    <div class="tab-content active" id="dashboard">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📝</div>
+          <div class="stat-info">
+            <div class="stat-value" id="totalWords">0</div>
+            <div class="stat-label">Total Words</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📊</div>
+          <div class="stat-info">
+            <div class="stat-value" id="sessionsCount">0</div>
+            <div class="stat-label">Sessions</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📏</div>
+          <div class="stat-info">
+            <div class="stat-value" id="avgSentence">0</div>
+            <div class="stat-label">Avg Sentence</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Tone Distribution</h3>
+        <div class="tone-chart" id="toneChart">
+          <div class="tone-bar" data-tone="formal">
+            <div class="tone-label">Formal</div>
+            <div class="tone-progress"><div class="tone-fill" style="width: 0%"></div></div>
+            <div class="tone-count">0</div>
+          </div>
+          <div class="tone-bar" data-tone="casual">
+            <div class="tone-label">Casual</div>
+            <div class="tone-progress"><div class="tone-fill" style="width: 0%"></div></div>
+            <div class="tone-count">0</div>
+          </div>
+          <div class="tone-bar" data-tone="neutral">
+            <div class="tone-label">Neutral</div>
+            <div class="tone-progress"><div class="tone-fill" style="width: 0%"></div></div>
+            <div class="tone-count">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Quick Actions</h3>
+        <div class="action-buttons">
+          <button class="action-btn" id="openSidePanel"><span>📑</span> Open Side Panel</button>
+          <button class="action-btn" id="resetStats"><span>🔄</span> Reset Statistics</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="settings">
+      <div class="section">
+        <h3>Appearance</h3>
+        <div class="setting-item">
+          <label for="themeSelect">Theme</label>
+          <select id="themeSelect" class="setting-select">
+            <option value="auto">Auto</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <label><input type="checkbox" id="whisperMode" class="setting-checkbox">
+            <span>Whisper Mode (Distraction-Free)</span></label>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Features</h3>
+        <div class="setting-item">
+          <label><input type="checkbox" id="autoComplete" class="setting-checkbox">
+            <span>Auto-Complete Suggestions</span></label>
+        </div>
+        <div class="setting-item">
+          <label><input type="checkbox" id="privacyMode" class="setting-checkbox" checked>
+            <span>Privacy Mode (Always On)</span></label>
+          <p class="setting-note">All processing happens locally on your device</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Language</h3>
+        <div class="setting-item">
+          <label for="languageSelect">Primary Language</label>
+          <select id="languageSelect" class="setting-select">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Style Profile</h3>
+        <div class="setting-item">
+          <button class="action-btn" id="uploadProfile"><span>📤</span> Upload Writing Sample</button>
+          <p class="setting-note">Train PrivatePen on your writing style</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <button class="save-btn" id="saveSettings">Save Settings</button>
+      </div>
+    </div>
+
+    <div class="tab-content" id="snippets">
+      <div class="section">
+        <div class="snippets-header">
+          <h3>Saved Snippets</h3>
+          <button class="action-btn small" id="addSnippet">+ Add</button>
+        </div>
+        <div id="snippetsList" class="snippets-list">
+          <div class="empty-state">
+            <span class="empty-icon">📝</span>
+            <p>No snippets yet</p>
+            <p class="empty-hint">Click "+ Add" to create your first snippet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-footer">
+      <span class="version">v1.0.0</span>
+      <span class="tagline">Write smart. Stay private.</span>
+    </div>
+  </div>
+
+  <div class="modal" id="snippetModal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add Snippet</h3>
+        <button class="modal-close" id="closeModal">×</button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="snippetTitle" class="modal-input" placeholder="Snippet title...">
+        <textarea id="snippetContent" class="modal-textarea" placeholder="Snippet content..."></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn cancel" id="cancelSnippet">Cancel</button>
+        <button class="modal-btn save" id="saveSnippet">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
