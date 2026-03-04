@@ -1,0 +1,7 @@
+{
+  "name": "PRIVATEPEN-PRO",
+  "description": "Your personal AI writing assistant for better, clearer writing. Features grammar checking, tone analysis, and text improvement using Gemini API.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
