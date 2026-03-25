@@ -14,8 +14,6 @@
 
 *Context-Aware Grammar Checking • Tone Analysis • Instant Rewriting • Multi-Language Support*
 
-[View Demo](#-screenshots) • [Report Bug](https://github.com/yourusername/privatepen-pro/issues) • [Request Feature](https://github.com/yourusername/privatepen-pro/issues)
-
 </div>
 
 ---
