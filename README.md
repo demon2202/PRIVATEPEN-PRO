@@ -2,7 +2,6 @@
 # 🖋️ PRIVATEPEN-PRO
 
 <div align="center">
-
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 [![Gemini](https://img.shields.io/badge/AI-Google%20Gemini%203-8E75B2)]()
